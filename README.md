@@ -1,2 +1,2 @@
 # EduKabayan-
-School Website 
+School Website I made as a project
