@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX Design Mastery - EduKabayan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1abc9c, #16a085) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #f39c12 !important;
+            transform: translateY(-2px);
+        }
+
+        .course-hero {
+            background: linear-gradient(135deg, rgba(26, 188, 156, 0.8), rgba(22, 160, 133, 0.8)), url('UI-1.jpg') center/cover;
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .course-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .course-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .course-badge {
+            background-color: #f39c12;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .course-stats {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+        }
+
+        .course-content {
+            padding: 60px 0;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .content-card h3 {
+            color: #1abc9c;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .content-card p, .content-card li {
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .sidebar-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1abc9c;
+            margin-bottom: 20px;
+        }
+
+        .enroll-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .enroll-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #1abc9c;
+            font-weight: bold;
+        }
+
+        .module-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .module-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .module-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .module-duration {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .instructor-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .instructor-info h4 {
+            margin: 0;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .instructor-info p {
+            margin: 5px 0 0 0;
+            color: #64748b;
+        }
+
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer .text-muted {
+            color: #1abc9c !important;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #1abc9c;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        @media (max-width: 768px) {
+            .course-hero h1 {
+                font-size: 2rem;
+            }
+
+            .sidebar-card {
+                position: relative;
+                top: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📚 EduKabayan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Hero -->
+    <section class="course-hero">
+        <div class="container">
+            <span class="course-badge">Popular</span>
+            <h1>UI/UX Design Mastery</h1>
+            <p>Create beautiful, user-friendly designs with industry-standard tools and techniques</p>
+            <div class="course-stats">
+                <div class="stat-item">
+                    <span class="stat-icon">⭐</span>
+                    <span>4.8 (3,120 reviews)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">👥</span>
+                    <span>15,670 students</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🕐</span>
+                    <span>40 hours content</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">📱</span>
+                    <span>Mobile & Desktop</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Content -->
+    <section class="course-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- What You'll Learn -->
+                    <div class="content-card">
+                        <h3>What You'll Learn</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="feature-list">
+                                    <li><span class="check-icon">✓</span> Master Figma and Adobe XD</li>
+                                    <li><span class="check-icon">✓</span> User research and personas</li>
+                                    <li><span class="check-icon">✓</span> Wireframing and prototyping</li>
+                                    <li><span class="check-icon">✓</span> Design systems and style guides</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="feature-list">
+                                    <li><span class="check-icon">✓</span> UI design principles and trends</li>
+                                    <li><span class="check-icon">✓</span> Usability testing methods</li>
+                                    <li><span class="check-icon">✓</span> Mobile and web app design</li>
+                                    <li><span class="check-icon">✓</span> Build a professional portfolio</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Description -->
+                    <div class="content-card">
+                        <h3>Course Description</h3>
+                        <p>Transform your creative vision into stunning digital experiences with our comprehensive UI/UX Design Mastery course. Whether you're starting from scratch or looking to enhance your design skills, this course covers everything you need to become a professional UI/UX designer.</p>
+                        <p>Learn the complete design process from user research and wireframing to high-fidelity prototypes and user testing. Master industry-standard tools like Figma and Adobe XD while understanding the psychology behind great user experiences.</p>
+                        <p>This hands-on course includes real-world projects where you'll design mobile apps, websites, and dashboard interfaces. You'll learn to create responsive designs that work seamlessly across all devices and understand how to communicate your design decisions effectively to stakeholders.</p>
+                        <p>By the end of this course, you'll have a professional portfolio showcasing multiple design projects, a deep understanding of user-centered design principles, and the confidence to pursue a career as a UI/UX designer at top companies or as a freelancer.</p>
+                    </div>
+
+                    <!-- Course Curriculum -->
+                    <div class="content-card">
+                        <h3>Course Curriculum</h3>
+                        <p class="mb-4">10 Modules • 40 Hours Total</p>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 1: Introduction to UI/UX Design</div>
+                            <div class="module-duration">6 lessons • 3 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 2: User Research & Analysis</div>
+                            <div class="module-duration">8 lessons • 4 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 3: Information Architecture</div>
+                            <div class="module-duration">7 lessons • 3.5 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 4: Wireframing & Low-Fidelity Prototypes</div>
+                            <div class="module-duration">9 lessons • 4.5 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 5: Visual Design Principles</div>
+                            <div class="module-duration">10 lessons • 5 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 6: Mastering Figma</div>
+                            <div class="module-duration">12 lessons • 6 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 7: High-Fidelity UI Design</div>
+                            <div class="module-duration">10 lessons • 5 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 8: Interactive Prototyping</div>
+                            <div class="module-duration">8 lessons • 4 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 9: Usability Testing & Iteration</div>
+                            <div class="module-duration">7 lessons • 3.5 hours</div>
+                        </div>
+                        
+                        <div class="module-item">
+                            <div class="module-title">Module 10: Portfolio & Career Development</div>
+                            <div class="module-duration">4 lessons • 1.5 hours</div>
+                        </div>
+                    </div>
+
+                    <!-- Requirements -->
+                    <div class="content-card">
+                        <h3>Requirements</h3>
+                        <ul>
+                            <li>No prior design experience required</li>
+                            <li>A computer (Mac or PC)</li>
+                            <li>Interest in design and user experience</li>
+                            <li>Figma account (free version is fine)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Instructor -->
+                    <div class="content-card">
+                        <h3>Your Instructor</h3>
+                        <div class="instructor-card">
+                            <div class="instructor-avatar">🎨</div>
+                            <div class="instructor-info">
+                                <h4>Jessica Martinez</h4>
+                                <p>Senior UX Designer at Google | 8+ years experience</p>
+                                <p>⭐ 4.9 Instructor Rating • 32,000+ Students • 6 Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="sidebar-card">
+                        <div class="price-tag">₱2,799</div>
+                        <button class="enroll-btn">Enroll Now</button>
+                        
+                        <h5 class="mt-4 mb-3">This course includes:</h5>
+                        <ul class="feature-list">
+                            <li><span class="check-icon">✓</span> 40 hours video content</li>
+                            <li><span class="check-icon">✓</span> 45+ design templates</li>
+                            <li><span class="check-icon">✓</span> Lifetime access</li>
+                            <li><span class="check-icon">✓</span> Mobile & desktop access</li>
+                            <li><span class="check-icon">✓</span> Certificate of completion</li>
+                            <li><span class="check-icon">✓</span> 30-day money-back guarantee</li>
+                        </ul>
+
+                        <div class="mt-4 p-3" style="background: #f8f9fa; border-radius: 10px;">
+                            <h6 style="color: #1a1a1a; font-weight: 600;">Share this course</h6>
+                            <div class="d-flex gap-2 mt-2">
+                                <button class="btn btn-sm btn-outline-secondary">📘</button>
+                                <button class="btn btn-sm btn-outline-secondary">🐦</button>
+                                <button class="btn btn-sm btn-outline-secondary">📧</button>
+                                <button class="btn btn-sm btn-outline-secondary">🔗</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="footer-title">📚 EduKabayan</h3>
+                    <p class="text-muted">Empowering learners worldwide with quality education and innovative learning experiences.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="courses.html" class="footer-link">Courses</a>
+                    <a href="features.html" class="footer-link">Features</a>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <a href="contact.html" class="footer-link">Help Center</a>
+                    <a href="contact.html" class="footer-link">FAQs</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Stay Connected</h5>
+                    <p class="text-muted">Subscribe to our newsletter for updates and exclusive offers</p>
+                    <form class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email" required>
+                        <button class="btn btn-success" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EduKabayan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

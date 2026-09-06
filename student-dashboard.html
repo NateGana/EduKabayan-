@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - EduKabayan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1abc9c, #16a085) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #f39c12 !important;
+            transform: translateY(-2px);
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+            padding: 40px 0;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-content {
+            padding: 40px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-icon.green {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+        }
+
+        .stat-icon.orange {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+
+        .stat-icon.blue {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .stat-icon.purple {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .course-thumbnail {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            border: none;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .activity-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .activity-date {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .activity-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-top: 5px;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            border: 2px solid #f39c12;
+        }
+
+        .certificate-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer .text-muted {
+            color: #1abc9c !important;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #1abc9c;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📚 EduKabayan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="student-dashboard.html">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section class="dashboard-header">
+        <div class="container">
+            <h1>Welcome back, Juan! 👋</h1>
+            <p class="mb-0">Ready to continue your learning journey?</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-content">
+        <div class="container">
+            <!-- Stats Row -->
+            <div class="row mb-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon green">📚</div>
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Enrolled Courses</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon orange">⏱️</div>
+                        <div class="stat-number">42h</div>
+                        <div class="stat-label">Learning Hours</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">🏆</div>
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Certificates</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon purple">📈</div>
+                        <div class="stat-number">67%</div>
+                        <div class="stat-label">Avg. Progress</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Left Column - My Courses -->
+                <div class="col-lg-8">
+                    <h2 class="section-title">My Courses</h2>
+                    
+                    <div class="course-card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="course-thumbnail">💻</div>
+                            </div>
+                            <div class="col-md-9">
+                                <h3 class="course-title">Web Development Bootcamp</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                </div>
+                                <p class="progress-text mb-3">75% Complete • Module 8 of 10</p>
+                                <button class="continue-btn">Continue Learning</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="course-thumbnail">🎨</div>
+                            </div>
+                            <div class="col-md-9">
+                                <h3 class="course-title">UI/UX Design Mastery</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 60%"></div>
+                                </div>
+                                <p class="progress-text mb-3">60% Complete • Module 6 of 10</p>
+                                <button class="continue-btn">Continue Learning</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="course-thumbnail">📊</div>
+                            </div>
+                            <div class="col-md-9">
+                                <h3 class="course-title">Digital Marketing</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 40%"></div>
+                                </div>
+                                <p class="progress-text mb-3">40% Complete • Module 4 of 9</p>
+                                <button class="continue-btn">Continue Learning</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <h2 class="section-title mt-5">Recent Activity</h2>
+                    <div class="activity-item">
+                        <div class="activity-date">2 hours ago</div>
+                        <div class="activity-title">✅ Completed "JavaScript ES6+ Features" lesson</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-date">Yesterday</div>
+                        <div class="activity-title">🎯 Earned 100 points in Web Development Quiz</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-date">2 days ago</div>
+                        <div class="activity-title">📝 Submitted final project for UI/UX Module 5</div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Certificates & Recommendations -->
+                <div class="col-lg-4">
+                    <h2 class="section-title">My Certificates</h2>
+                    <div class="certificate-card text-center">
+                        <div class="certificate-icon">🏆</div>
+                        <h4 style="font-weight: 700; color: #1a1a1a;">Digital Marketing Foundations</h4>
+                        <p style="color: #64748b; font-size: 0.9rem;">Completed: Nov 15, 2024</p>
+                        <button class="btn btn-warning btn-sm">Download Certificate</button>
+                    </div>
+
+                    <h2 class="section-title mt-4">Recommended for You</h2>
+                    <div class="course-card">
+                        <div class="course-thumbnail">📱</div>
+                        <h3 class="course-title">Mobile App Development</h3>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 15px;">Build iOS & Android apps with React Native</p>
+                        <button class="btn btn-outline-success btn-sm w-100">View Course</button>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-thumbnail">🤖</div>
+                        <h3 class="course-title">Data Science & AI</h3>
+                        <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 15px;">Master machine learning and AI fundamentals</p>
+                        <button class="btn btn-outline-success btn-sm w-100">View Course</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="footer-title">📚 EduKabayan</h3>
+                    <p class="text-muted">Empowering learners worldwide with quality education and innovative learning experiences.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="courses.html" class="footer-link">Courses</a>
+                    <a href="features.html" class="footer-link">Features</a>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <a href="contact.html" class="footer-link">Help Center</a>
+                    <a href="contact.html" class="footer-link">FAQs</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Stay Connected</h5>
+                    <p class="text-muted">Subscribe to our newsletter for updates and exclusive offers</p>
+                    <form class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email" required>
+                        <button class="btn btn-success" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EduKabayan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

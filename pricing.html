@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - EduKabayan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1abc9c, #16a085) !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #f39c12 !important;
+            transform: translateY(-2px);
+        }
+
+        .pricing-hero {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .pricing-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .pricing-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #f39c12;
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            background: #f39c12;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1abc9c;
+            margin-bottom: 5px;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        .plan-description {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #64748b;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #1abc9c;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-btn.primary {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+        }
+
+        .pricing-btn.secondary {
+            background: white;
+            color: #1abc9c;
+            border: 2px solid #1abc9c;
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-top: 60px;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            border-bottom: 2px solid #1abc9c;
+            color: #1a1a1a;
+            font-weight: 700;
+            padding: 20px 15px;
+        }
+
+        .table tbody td {
+            padding: 15px;
+            vertical-align: middle;
+        }
+
+        .faq-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background: white;
+            color: #1a1a1a;
+            font-weight: 600;
+            padding: 20px 25px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+
+        .accordion-body {
+            background: white;
+            color: #64748b;
+            padding: 20px 25px;
+        }
+
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer .text-muted {
+            color: #1abc9c !important;
+        }
+
+        .footer-link {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #1abc9c;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2rem;
+            }
+
+            .plan-price {
+                font-size: 2.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">📚 EduKabayan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>Choose Your Learning Plan</h1>
+            <p>Flexible pricing options to fit your learning goals and budget</p>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="row">
+                <!-- Free Plan -->
+                <div class="col-lg-4">
+                    <div class="pricing-card">
+                        <h3 class="plan-name">Free</h3>
+                        <div class="plan-price">₱0<span>/month</span></div>
+                        <p class="plan-description">Perfect for exploring our platform</p>
+                        <ul class="feature-list">
+                            <li><span class="check-icon">✓</span> Access to 5 free courses</li>
+                            <li><span class="check-icon">✓</span> Limited video content</li>
+                            <li><span class="check-icon">✓</span> Community forum access</li>
+                            <li><span class="check-icon">✓</span> Basic progress tracking</li>
+                            <li style="opacity: 0.4;">✗ Certificates</li>
+                            <li style="opacity: 0.4;">✗ Downloadable resources</li>
+                        </ul>
+                        <button class="pricing-btn secondary">Get Started Free</button>
+                    </div>
+                </div>
+
+                <!-- Monthly Plan -->
+                <div class="col-lg-4">
+                    <div class="pricing-card featured">
+                        <span class="pricing-badge">Most Popular</span>
+                        <h3 class="plan-name">Monthly</h3>
+                        <div class="plan-price">₱499<span>/month</span></div>
+                        <p class="plan-description">Best for committed learners</p>
+                        <ul class="feature-list">
+                            <li><span class="check-icon">✓</span> Unlimited course access</li>
+                            <li><span class="check-icon">✓</span> All video content</li>
+                            <li><span class="check-icon">✓</span> Certificates of completion</li>
+                            <li><span class="check-icon">✓</span> Downloadable resources</li>
+                            <li><span class="check-icon">✓</span> Priority support</li>
+                            <li><span class="check-icon">✓</span> Mobile app access</li>
+                        </ul>
+                        <button class="pricing-btn primary">Subscribe Now</button>
+                    </div>
+                </div>
+
+                <!-- Annual Plan -->
+                <div class="col-lg-4">
+                    <div class="pricing-card">
+                        <span class="pricing-badge" style="background: #27ae60;">Save 40%</span>
+                        <h3 class="plan-name">Annual</h3>
+                        <div class="plan-price">₱2,999<span>/year</span></div>
+                        <p class="plan-description">Best value for serious learners</p>
+                        <ul class="feature-list">
+                            <li><span class="check-icon">✓</span> Everything in Monthly</li>
+                            <li><span class="check-icon">✓</span> Save ₱3,000/year</li>
+                            <li><span class="check-icon">✓</span> Exclusive content</li>
+                            <li><span class="check-icon">✓</span> 1-on-1 mentorship sessions</li>
+                            <li><span class="check-icon">✓</span> Career guidance</li>
+                            <li><span class="check-icon">✓</span> Lifetime course updates</li>
+                        </ul>
+                        <button class="pricing-btn primary">Subscribe Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Courses -->
+            <div class="text-center mt-5">
+                <h2 class="section-title">Or Buy Individual Courses</h2>
+                <p class="section-subtitle">Purchase courses one at a time with lifetime access</p>
+                <p style="font-size: 1.1rem; color: #64748b;">Course prices range from <strong style="color: #1abc9c;">₱2,499 to ₱3,499</strong></p>
+                <a href="courses.html" class="btn btn-success btn-lg" style="padding: 15px 40px; border-radius: 10px;">Browse All Courses</a>
+            </div>
+
+            <!-- Business Plan -->
+            <div class="comparison-table mt-5">
+                <h2 class="section-title mb-4">Enterprise & Team Solutions</h2>
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h4 style="color: #1a1a1a; font-weight: 700;">Custom Plans for Teams</h4>
+                        <p style="color: #64748b; margin-bottom: 20px;">Perfect for companies looking to upskill their workforce. Get bulk pricing, custom content, and dedicated support.</p>
+                        <ul style="list-style: none; padding: 0; color: #64748b;">
+                            <li style="margin-bottom: 10px;"><span class="check-icon">✓</span> Unlimited team members</li>
+                            <li style="margin-bottom: 10px;"><span class="check-icon">✓</span> Admin dashboard & analytics</li>
+                            <li style="margin-bottom: 10px;"><span class="check-icon">✓</span> Custom learning paths</li>
+                            <li style="margin-bottom: 10px;"><span class="check-icon">✓</span> Dedicated account manager</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div style="font-size: 2.5rem; font-weight: 800; color: #1abc9c; margin-bottom: 20px;">Custom</div>
+                        <a href="contact.html" class="btn btn-success btn-lg w-100">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about our pricing</p>
+
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Can I switch plans anytime?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! You can upgrade or downgrade your plan at any time. If you upgrade, you'll be charged the prorated difference. If you downgrade, the change will take effect at the end of your current billing cycle.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            What's your refund policy?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We offer a 30-day money-back guarantee for all subscriptions and course purchases. If you're not satisfied within the first 30 days, contact us for a full refund.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Do individual course purchases expire?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No! When you purchase an individual course, you get lifetime access to that course including all future updates and materials.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Are there student discounts available?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! Students with a valid ID can get 20% off on monthly and annual subscriptions. Contact our support team with your student ID to claim your discount.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            What payment methods do you accept?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We accept all major credit cards, debit cards, GCash, PayMaya, and bank transfers. All payments are processed securely through our payment partners.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="footer-title">📚 EduKabayan</h3>
+                    <p class="text-muted">Empowering learners worldwide with quality education and innovative learning experiences.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="courses.html" class="footer-link">Courses</a>
+                    <a href="features.html" class="footer-link">Features</a>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Support</h5>
+                    <a href="contact.html" class="footer-link">Help Center</a>
+                    <a href="contact.html" class="footer-link">FAQs</a>
+                    <a href="contact.html" class="footer-link">Contact Us</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Stay Connected</h5>
+                    <p class="text-muted">Subscribe to our newsletter for updates and exclusive offers</p>
+                    <form class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email" required>
+                        <button class="btn btn-success" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EduKabayan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
