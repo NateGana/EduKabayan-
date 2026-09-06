@@ -1,4 +1,4 @@
 # EduKabayan-
-School Website 
+School Website I made last year
 
-View here: 
+View here: https://nategana.github.io/EduKabayan-/index.html
